@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 
 if __name__ == '__main__':
-    url = 'https://suzhou.anjuke.com/sale/wujiang/'
+    url = 'https://suzhou.anjuke.com/sale/yuanqu/'
 
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
                  '59.0.3071.115 Safari/537.36'
@@ -23,6 +23,10 @@ if __name__ == '__main__':
     region_items_details = children[1]
     selected_region = region_items_details.find("span", class_="selected-item")
     region = selected_region.string
-    print(region)
+
+    sub_items = region_items_details.find("div", class_="sub-items")
+    sub_items_list = sub_items.find_all("a")
+    print(sub_items_list)
+
 
 
