@@ -101,7 +101,7 @@ def add2house_items_from_one_page():
 
 
 if __name__ == '__main__':
-    url = 'https://suzhou.anjuke.com/sale/changqiaoa/p%s'
+    url = 'https://suzhou.anjuke.com/sale/guoxiang/p%s'
 
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
                  '59.0.3071.115 Safari/537.36'
@@ -121,4 +121,4 @@ if __name__ == '__main__':
             break
 
     print(len(house_items))
-    house_list2xls('吴中', '长桥', house_items)
+    house_list2xls('吴中', '郭巷', house_items)
