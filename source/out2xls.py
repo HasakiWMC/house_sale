@@ -101,7 +101,7 @@ def add_sheet_by_town_name(param_key):
 
 def add_workbook_by_region_name(param_region_name):
     global wb, house_items, item_index, is_has_next, sub_response
-    wb = xlsxwriter.Workbook(param_region_name + '.xls')
+    wb = xlsxwriter.Workbook('../house_sale_xls/' + param_region_name + '.xls')
     for key in sub_items_dict.keys():
         print(key)
         sub_url = sub_items_dict[key] + 'p%s'
@@ -125,7 +125,7 @@ def add_workbook_by_region_name(param_region_name):
 
 
 if __name__ == '__main__':
-    url = 'https://suzhou.anjuke.com/sale/wuzhong/'
+    url = 'https://suzhou.anjuke.com/sale/jinchang/'
 
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
                  '59.0.3071.115 Safari/537.36'
