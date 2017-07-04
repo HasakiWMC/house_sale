@@ -9,7 +9,7 @@ import requests
 import xlsxwriter
 from bs4 import BeautifulSoup
 
-from house_item import HouseItem
+from source.house_item import HouseItem
 
 
 def find_sub_link_by_region_name(param_url):
@@ -99,25 +99,14 @@ def add_sheet_by_town_name(param_key):
         i = i + 1
 
 
-if __name__ == '__main__':
-    url = 'https://suzhou.anjuke.com/sale/wuzhong/'
-
-    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
-                 '59.0.3071.115 Safari/537.36'
-    headers = {
-        'User-Agent': user_agent,
-    }
-    region_name, sub_items_dict = find_sub_link_by_region_name(url)
-    print(region_name)
-    print(sub_items_dict.keys())
-
-    wb = xlsxwriter.Workbook(region_name + '.xls')
-
+def add_workbook_by_region_name(param_region_name):
+    global wb, house_items, item_index, is_has_next, sub_response
+    wb = xlsxwriter.Workbook(param_region_name + '.xls')
     for key in sub_items_dict.keys():
         print(key)
         sub_url = sub_items_dict[key] + 'p%s'
         print(sub_url)
-        page_index = 48
+        page_index = 1
         house_items = []
         item_index = 0
         is_has_next = 0
@@ -133,3 +122,18 @@ if __name__ == '__main__':
 
         add_sheet_by_town_name(key)
     wb.close()
+
+
+if __name__ == '__main__':
+    url = 'https://suzhou.anjuke.com/sale/wuzhong/'
+
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
+                 '59.0.3071.115 Safari/537.36'
+    headers = {
+        'User-Agent': user_agent,
+    }
+    region_name, sub_items_dict = find_sub_link_by_region_name(url)
+    print(region_name)
+    print(sub_items_dict.keys())
+
+    add_workbook_by_region_name(region_name)
