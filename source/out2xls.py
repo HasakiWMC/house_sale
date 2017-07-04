@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from source.house_item import HouseItem
 
 
+# 根据县区名字找到下面街道或者镇的url链接
 def find_sub_link_by_region_name(param_url):
     global headers
     response = requests.get(url=param_url, headers=headers)
@@ -32,6 +33,7 @@ def find_sub_link_by_region_name(param_url):
     return param_region_name, param_sub_items_dict
 
 
+# 从当前页上把房产信息添加到house_items列表上
 def add2house_items_from_one_page():
     global item_index
     global is_has_next
@@ -69,6 +71,7 @@ def add2house_items_from_one_page():
         house_items.append(house_item)
 
 
+# 根据城镇名在xls添加sheet
 def add_sheet_by_town_name(param_key):
     ws = wb.add_worksheet(param_key)
     ws.set_column('A:A', 60)
@@ -99,6 +102,7 @@ def add_sheet_by_town_name(param_key):
         i = i + 1
 
 
+# 根据县区名创建xls
 def add_workbook_by_region_name(param_region_name):
     global wb, house_items, item_index, is_has_next, sub_response
     wb = xlsxwriter.Workbook('../house_sale_xls/' + param_region_name + '.xls')
