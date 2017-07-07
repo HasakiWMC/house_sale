@@ -2,7 +2,7 @@
 # -*- coding:utf-8 _*-  
 """ 
 @author:51211 
-@file: out2xls.py 
+@file: out2xlsForSale.py
 @time: 2017/07/04 
 """
 import requests
@@ -129,7 +129,7 @@ def add_workbook_by_region_name(param_region_name):
 
 
 if __name__ == '__main__':
-    url = 'https://suzhou.anjuke.com/sale/jinchang/'
+    url = 'https://suzhou.anjuke.com/sale/wuzhong/'
 
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
                  '59.0.3071.115 Safari/537.36'
