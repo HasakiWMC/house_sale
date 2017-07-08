@@ -9,7 +9,7 @@ import requests
 import xlsxwriter
 from bs4 import BeautifulSoup
 
-from source.house_item import HouseItem
+from source.sale_item import HouseItem
 
 
 # 根据县区名字找到下面街道或者镇的url链接

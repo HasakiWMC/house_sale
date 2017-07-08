@@ -2,7 +2,7 @@
 # -*- coding:utf-8 _*-  
 """ 
 @author:51211 
-@file: house_item.py 
+@file: sale_item.py
 @time: 2017/07/02 
 """
 
