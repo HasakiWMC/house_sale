@@ -100,7 +100,10 @@ def add_sheet_by_town_name(param_key):
 # 根据县区名创建xls
 def add_workbook_by_region_name(param_region_name):
     global wb, house_items, item_index, is_has_next, sub_response
-    wb = xlsxwriter.Workbook('../house_sale_xls/' + param_region_name + '小区.xls')
+    import os
+    if not os.path.exists('../house_community_xls'):
+        os.makedirs('../house_community_xls')
+    wb = xlsxwriter.Workbook('../house_community_xls/' + param_region_name + '小区.xlsx')
     for key in sub_items_dict.keys():
         print(key)
         sub_url = sub_items_dict[key] + 'p%s'
@@ -124,10 +127,20 @@ def add_workbook_by_region_name(param_region_name):
 
 
 if __name__ == '__main__':
-    url = 'https://suzhou.anjuke.com/community/changshua/'
+    # community_list index from 0 ~ 7
+    community_list = ['wuzhong',
+                      'xiangcheng',
+                      'wujiang',
+                      'gushuqu',
+                      'changshua',
+                      'zhangjiagang',
+                      'huqius',
+                      'taicang']
 
-    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/' \
-                 '59.0.3071.115 Safari/537.36'
+    url = 'https://suzhou.anjuke.com/community/%s/' % community_list[4]
+
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' \
+                 'Chrome/67.0.3396.99 Safari/537.36 '
     headers = {
         'User-Agent': user_agent,
     }
